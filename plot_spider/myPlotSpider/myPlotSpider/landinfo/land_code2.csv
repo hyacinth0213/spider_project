@@ -1,0 +1,17 @@
+index_label,land,code,int-code
+0,Baden-Württemberg,BW,DE-BW
+1,Bayern,BY,DE-BY
+2,Berlin,BE,DE-BE
+3,Brandenburg,BB,DE-BB
+4,Bremen,HB,DE-HB
+5,Hamburg,HH,DE-HH
+6,Hessen,HE,DE-HE
+7,Mecklenburg-Vorpommern,MV,DE-MV
+8,Niedersachsen,NI,DE-NI
+9,Nordrhein-Westfalen,NW,DE-NW
+10,Rheinland-Pfalz,RP,DE-RP
+11,Saarland,SL,DE-SL
+12,Sachsen,SN,DE-SN
+13,Sachsen-Anhalt,ST,DE-ST
+14,Schleswig-Holstein,SH,DE-SH
+15,Thüringen,TH,DE-TH
