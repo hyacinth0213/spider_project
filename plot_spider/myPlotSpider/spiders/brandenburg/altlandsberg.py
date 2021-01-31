@@ -12,17 +12,17 @@ class AltlandsbergSpider(scrapy.Spider):
     def parse(self, response):
         plot_list = response.xpath("//div[@class='item']")
         # len = 3
-        for i in range(0, len(plot_list)):
+        for plot in plot_list:
             item = MyplotspiderItem()
-
-            plot_div = plot_list[i]
+            plot_div = plot.xpath("div[@class='item-title']//text()")
+            title = fix_field(plot_div.extract_first())
+            # print(title)
             bundesland = 'Brandenburg'
             county = 'Altlandsberg'
             title = ''
             category = ''
             properties = ''
             # todo
-            
 
         """
         # title = response.xpath("//div[@class='item']").xpath("//div[@class='item-title']//text()").extract_first()
@@ -39,4 +39,3 @@ def fix_field(field):
 
 def fix_html_field(html_field):
     return "".join(html_field)  # convert html content to a string
-
