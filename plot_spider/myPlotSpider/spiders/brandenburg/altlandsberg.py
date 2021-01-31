@@ -14,9 +14,12 @@ class AltlandsbergSpider(scrapy.Spider):
         # len = 3
         for plot in plot_list:
             item = MyplotspiderItem()
-            plot_div = plot.xpath("div[@class='item-title']//text()")
-            title = fix_field(plot_div.extract_first())
-            # print(title)
+            plot_title_div = plot.xpath("div[@class='item-title']//text()")
+            title = fix_field(plot_title_div.extract_first())
+            plot_properties_div_list = plot.xpath("div[@class='item-properties']//text()").extract()
+            # 在这里对每一段文字进行预处理格式，以便后续存入数据库
+            # 如果有图片的话，也可以进行相应处理...
+            # todo
             bundesland = 'Brandenburg'
             county = 'Altlandsberg'
             title = ''
@@ -37,5 +40,5 @@ def fix_field(field):
     return field.strip() if field else ''
 
 
-def fix_html_field(html_field):
-    return "".join(html_field)  # convert html content to a string
+def fix_properties_field(properties_field):
+    return "".join(properties_field)  # convert html content to a string
