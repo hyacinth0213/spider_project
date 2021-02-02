@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import scrapy
 import hashlib
 from scrapy.spiders import Spider
@@ -18,14 +20,16 @@ class AltlandsbergSpider(scrapy.Spider):
             plot_title_div = plot.xpath("div[@class='item-title']//text()")
             title = fix_field(plot_title_div.extract_first())
             plot_properties_div_list = plot.xpath("div[@class='item-properties']//text()").extract()
+            # 这里得到的是一个包含描述分句的列表
             # 在这里对每一段文字进行预处理格式，以便后续存入数据库
             # 如果有图片的话，也可以进行相应处理...
             # todo
-            bundesland = 'Brandenburg'
-            county = 'Altlandsberg'
-            title = ''
+            bundesland = 'Brandenburg'  # 联邦州名
+            county = 'Altlandsberg'  # 城市或地区名
+            title = fix_field(plot_title_div.extract_first())
             category = ''
             properties = ''
+            url = response.request.url  # 获取链接地址
             # todo
 
         """
