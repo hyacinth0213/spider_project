@@ -27,8 +27,12 @@ class AltlandsbergSpider(scrapy.Spider):
             bundesland = 'Brandenburg'  # 联邦州名
             county = 'Altlandsberg'  # 城市或地区名
             title = fix_field(plot_title_div.extract_first())
-            category = ''
-            properties = ''
+            plot_category_div = plot.xpath("div[@class='item-category']//text()")
+            category = fix_field(plot_category_div.extract()[1])
+            properties = ''  # 在这里对之前提取的properties文本list对象进行处理
+            # 提取image
+            plot_properties_div = plot.xpath("div[@class='item-properties']")
+
             url = response.request.url  # 获取链接地址
             # todo
 
