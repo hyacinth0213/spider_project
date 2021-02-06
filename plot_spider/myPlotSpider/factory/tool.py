@@ -45,6 +45,5 @@ class Factories(object):  # 在这里加入一些静态类方法
         return field.strip() if field else ''
 
 
-print(Factories.get_suffix_type('https://www.altlandsberg.de/uploads/images/grundstuecke/id19/Gutshof_ Gielsdorf.pdf'))
-print(Factories.get_suffix_type('https://www.altlandsberg.de/uploads/images/grundstuecke/id35/Kastanienallee 53 FK.jpg'))
-
+# print(Factories.get_suffix_type('https://www.altlandsberg.de/uploads/images/grundstuecke/id19/Gutshof_ Gielsdorf.pdf'))
+# print(Factories.get_suffix_type('https://www.altlandsberg.de/uploads/images/grundstuecke/id35/Kastanienallee 53 FK.jpg'))

@@ -54,6 +54,10 @@ class AltlandsbergSpider(scrapy.Spider):
         # todo
         pass
 
+    def parse_detail(self, response):
+        # parse some detail information and pass to item object for further storing
+        pass
+
 
 def fix_field(field):
     return field.strip() if field else ''
@@ -62,7 +66,3 @@ def fix_field(field):
 def fix_properties_field(properties_field):
     return "".join(properties_field)  # convert html content to a string
 
-
-def string_to_hash(s):  # 使用md5或uuid将字符串转换成唯一的数值
-    m = hashlib.sha1(s.encode("utf-8")).hexdigest()
-    return m
