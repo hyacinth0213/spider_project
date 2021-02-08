@@ -55,7 +55,7 @@ class AltlandsbergSpider(scrapy.Spider):
         pass
 
     def parse_detail(self, response):
-        # parse some detail information and pass to item object for further storing
+        # parse some detail information and pass to item object for further processing
         pass
 
 
