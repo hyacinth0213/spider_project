@@ -16,7 +16,9 @@ class AltlandsbergSpider(scrapy.Spider):
     def parse(self, response):
         plot_list = response.xpath("//div[@class='item']")
         # len = 3
+        # index = 0
         for plot in plot_list:
+            index = index + 1
             item = MyplotspiderItem()
             plot_title_div = plot.xpath("div[@class='item-title']//text()")
             title = Factories.fix_field(plot_title_div.extract_first())
@@ -32,18 +34,19 @@ class AltlandsbergSpider(scrapy.Spider):
             plot_category_div = plot.xpath("div[@class='item-category']//text()")
             category = fix_field(plot_category_div.extract()[-1])
             properties = ''  # 在这里对之前提取的properties文本list对象进行处理
+            properties = plot_properties_div_list  # 将描述的string列表直接传给properties变量
             # print("title: " + title + " ; category: " + category)
             # 提取image
             plot_properties_div = plot.xpath("div[@class='item-properties']")
-            img_list = plot_properties_div.xpath("//img/@src")
-            # 提取图片链接
-            img_urls = []
+            # 提取图片链接list
+            img_urls = plot_properties_div.xpath("a/img/@src").extract()
             url = response.request.url  # 获取链接地址
             # 提取pdf链接
             # 将PDF文档定义为只有一个
             # pdf_url = ''
             plot_link_list = plot_properties_div.xpath("a/@href")
             # 一部分link是img，一部分link是pdf文档
+            # print(index)
             # todo
 
         """

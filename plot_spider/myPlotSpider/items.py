@@ -17,4 +17,11 @@ class MyplotspiderItem(scrapy.Item):
     uid = scrapy.Field()  # 唯一识别id
     url = scrapy.Field()  # 链接地址
     imgUrls = scrapy.Field()  # 图片链接地址（图片链接为一个list）
+    imgNames = scrapy.Field()  # 图片名list
     # pass
+
+
+class ImagesrenameItem(scrapy.Item):
+    # todo
+    # image url, image name, image uid
+    pass

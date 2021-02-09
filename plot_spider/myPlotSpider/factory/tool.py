@@ -11,6 +11,10 @@ class Factories(object):  # 在这里加入一些静态类方法
         return m
 
     @staticmethod
+    def string_to_uuid(s):  # 将字符串转换成唯一的uuid
+        pass
+
+    @staticmethod
     def get_suffix_type(file):  # 判断一个文件的后缀名是什么类型
         # python中，使用==来比较两个**对象的值**是否相等，而java 则使用== 比较两个**对象**是否是同一对象
         # 譬如，java中比较字符串，一般使用equal 方法，来比较两个对象的值是否相等，而不使用==
@@ -43,7 +47,6 @@ class Factories(object):  # 在这里加入一些静态类方法
     @staticmethod
     def fix_field(field):
         return field.strip() if field else ''
-
 
 # print(Factories.get_suffix_type('https://www.altlandsberg.de/uploads/images/grundstuecke/id19/Gutshof_ Gielsdorf.pdf'))
 # print(Factories.get_suffix_type('https://www.altlandsberg.de/uploads/images/grundstuecke/id35/Kastanienallee 53 FK.jpg'))
