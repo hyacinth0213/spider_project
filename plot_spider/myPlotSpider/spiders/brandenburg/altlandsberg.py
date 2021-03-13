@@ -48,6 +48,7 @@ class AltlandsbergSpider(scrapy.Spider):
             # 一部分link是img，一部分link是pdf文档
             # print(index)
             # todo
+            # 在这里对其进行分类： 是文档还是图片？
 
         """
         # title = response.xpath("//div[@class='item']").xpath("//div[@class='item-title']//text()").extract_first()
@@ -68,4 +69,3 @@ def fix_field(field):
 
 def fix_properties_field(properties_field):
     return "".join(properties_field)  # convert html content to a string
-
