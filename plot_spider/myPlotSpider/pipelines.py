@@ -10,13 +10,18 @@ from pymongo import MongoClient
 
 import re
 import os
+import codecs
+import json
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy import Request
 
 
+def process_item(item, spider):
+    return item
+
+
 class MyplotspiderPipeline(object):
-    def process_item(self, item, spider):
-        return item
+    pass
 
 
 class ImagesrenamePipeline(ImagesPipeline):
@@ -30,12 +35,19 @@ class ImagesrenamePipeline(ImagesPipeline):
         pass
 
 
-class CSVPipeline(object):
+class PlotCsvPipeline(object):
     def __init__(self):
-        store_file = os.path.dirname(__file__) + '/spiders/plot.csv'
-        pass
+        self.file = codecs.open(filename='plot.csv', mode='w+', encoding='utf-8')
+        print("***************************************************************")
 
     def process_item(self, item, spider):
+        res = dict(item)
+        # 将字典形式的值，转化成字符串写入文件
+        json_str = json.dumps(res, ensure_ascii=False)
+        self.file.write(json_str)
+        self.file.write(',\n')
+
+    def open_spider(self, spider):
         pass
 
     def close_spider(self, spider):

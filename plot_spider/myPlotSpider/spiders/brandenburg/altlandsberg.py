@@ -4,7 +4,7 @@ import scrapy
 import hashlib
 from scrapy.spiders import Spider
 
-from myPlotSpider.factory.tool import Factories
+from myPlotSpider.factory.text_tool import Factories
 from myPlotSpider.items import MyplotspiderItem
 
 
@@ -25,7 +25,7 @@ class AltlandsbergSpider(scrapy.Spider):
             item = MyplotspiderItem()
             plot_title_div = plot.xpath("div[@class='item-title']//text()")
             title = Factories.fix_field(plot_title_div.extract_first())
-            # title = fix_field(plot_title_div.extract_first())
+            title = fix_field(plot_title_div.extract_first())
             plot_properties_div_list = plot.xpath("div[@class='item-properties']//text()").extract()
             # 这里得到的是一个包含描述分句的列表
             # 在这里对每一段文字进行预处理格式，以便后续存入数据库
@@ -39,20 +39,19 @@ class AltlandsbergSpider(scrapy.Spider):
             properties = ''  # 在这里对之前提取的properties文本list对象进行处理
             properties = plot_properties_div_list  # 将描述的string列表直接传给properties变量
             # 对properties内容进行处理
-
-            # print("title: " + title + " ; category: " + category)
+            # TODO...
             # 提取image
-            plot_properties_div = plot.xpath("div[@class='item-properties']")
+            # plot_properties_div = plot.xpath("div[@class='item-properties']")
             # 提取图片链接list
-            img_urls = plot_properties_div.xpath("a/img/@src").extract()
+            # img_urls = plot_properties_div.xpath("a/img/@src").extract()
             url = response.request.url  # 获取链接地址
             # 提取pdf链接
-            plot_link_list = plot_properties_div.xpath("a/@href")
+            # plot_link_list = plot_properties_div.xpath("a/@href")
             # 一部分link是img, 一部分link是pdf文档, 对其进行分类
-            # todo
+            # TODO...
             item['article_bundesland'] = bundesland
             item['article_county'] = county
-            item['article_title'] = title
+            # item['article_title'] = title
         """
         # title = response.xpath("//div[@class='item']").xpath("//div[@class='item-title']//text()").extract_first()
         # '<div class="item-title">Gutshof Gielsdorf<br></div>'
