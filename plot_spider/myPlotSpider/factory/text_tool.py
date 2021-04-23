@@ -46,7 +46,8 @@ class TextTools(object):
             new_line = each_line.replace("\r", "").replace("\n", "").replace("\t", "").strip()
             # print("new line:" + new_line)
             # if string is NULL, do not add
-            new_lines.append(new_line)
+            if new_line != "":
+                new_lines.append(new_line)
         return new_lines
 
 
@@ -66,4 +67,4 @@ if __name__ == "__main__":
     cleaned_text = TextTools.strip_string(text)
     for str_line in cleaned_text:
         print(str_line)
-    print("finish output")
+    # print("finish output")
