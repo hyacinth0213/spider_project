@@ -4,7 +4,7 @@ import scrapy
 import hashlib
 from scrapy.spiders import Spider
 
-from myPlotSpider.factory.text_tool import Factories
+from myPlotSpider.factory.text_tool import TextTools
 from myPlotSpider.items import MyplotspiderItem
 
 
@@ -24,7 +24,7 @@ class AltlandsbergSpider(scrapy.Spider):
             index = index + 1
             item = MyplotspiderItem()
             plot_title_div = plot.xpath("div[@class='item-title']//text()")
-            title = Factories.fix_field(plot_title_div.extract_first())
+            title = TextTools.fix_field(plot_title_div.extract_first())
             title = fix_field(plot_title_div.extract_first())
             plot_properties_div_list = plot.xpath("div[@class='item-properties']//text()").extract()
             # 这里得到的是一个包含描述分句的列表
